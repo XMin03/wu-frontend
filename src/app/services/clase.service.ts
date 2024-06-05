@@ -5,7 +5,7 @@ import {Option} from "../interfaces/option";
 import {ProfesorRow} from "../interfaces/profesor";
 
 //ENDPOINTS
-const CLASEURL="http://localhost:8080/v1/api/clases"
+const CLASEURL="https://wu-backend.onrender.com/v1/api/clases"
 
 const HTTPOPTIONS = {
   headers: new HttpHeaders({

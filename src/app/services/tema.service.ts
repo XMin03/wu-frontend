@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {Option} from "../interfaces/option";
 import {TareaDetail} from "../interfaces/tareaFase";
 
-const TEMAURL="http://localhost:8080/v1/api/temas"
+const TEMAURL="https://wu-backend.onrender.com/v1/api/temas"
 const HTTPOPTIONS = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'

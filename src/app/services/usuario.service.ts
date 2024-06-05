@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-const USUARIOURL="http://localhost:8080/v1/api/usuarios"
+const USUARIOURL="https://wu-backend.onrender.com/v1/api/usuarios"
 
 const HTTPOPTIONS = {
   headers: new HttpHeaders({

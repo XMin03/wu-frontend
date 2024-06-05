@@ -8,7 +8,7 @@ import {Usuario} from "../interfaces/usuario";
 })
 export class AuthService {
 
-  private apiAuthURL = "http://localhost:8080/v1/api/auth/";
+  private apiAuthURL = "https://wu-backend.onrender.com/v1/api/auth/";
 
   httpOptions = {
     headers: new HttpHeaders({

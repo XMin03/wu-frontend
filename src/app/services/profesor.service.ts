@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ProfesorForm, ProfesorRow} from "../interfaces/profesor";
 import {Option} from "../interfaces/option";
-const PROFESORURL="http://localhost:8080/v1/api/profesores"
+const PROFESORURL="https://wu-backend.onrender.com/v1/api/profesores"
 
 const HTTPOPTIONS = {
   headers: new HttpHeaders({

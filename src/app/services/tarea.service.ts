@@ -5,7 +5,7 @@ import {Option} from "../interfaces/option";
 import {TareaFase, TareaDetail} from "../interfaces/tareaFase";
 import {PuntoEstudiante} from "../interfaces/tarea-estudiante";
 
-const TAREASURL="http://localhost:8080/v1/api/tareas"
+const TAREASURL="https://wu-backend.onrender.com/v1/api/tareas"
 const HTTPOPTIONS = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'

@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {FaseEstudiante} from "../interfaces/faseEstudiante";
 
-const FASEURL="http://localhost:8080/v1/api/fases"
+const FASEURL="https://wu-backend.onrender.com/v1/api/fases"
 const HTTPOPTIONS = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json'

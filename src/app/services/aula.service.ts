@@ -6,7 +6,7 @@ import {Aula, AulaForm} from "../interfaces/aula";
 import {ProfesorRow} from "../interfaces/profesor";
 import {EstudianteRow} from "../interfaces/estudiante";
 
-const AULAURL="http://localhost:8080/v1/api/aulas"
+const AULAURL="https://wu-backend.onrender.com/v1/api/aulas"
 
 const HTTPOPTIONS = {
   headers: new HttpHeaders({

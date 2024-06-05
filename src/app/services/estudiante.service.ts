@@ -5,7 +5,7 @@ import {EstudianteForm, EstudianteRow} from "../interfaces/estudiante";
 import {Option} from "../interfaces/option";
 import {Tema} from "../interfaces/tema";
 import {PuntoTarea} from "../interfaces/tarea-estudiante";
-const ESTUDIANTEURL="http://localhost:8080/v1/api/estudiantes"
+const ESTUDIANTEURL="https://wu-backend.onrender.com/v1/api/estudiantes"
 
 const HTTPOPTIONS = {
   headers: new HttpHeaders({

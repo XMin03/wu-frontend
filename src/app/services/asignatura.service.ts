@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Option} from "../interfaces/option";
 
-const ASIGNATURAURL="http://localhost:8080/v1/api/asignaturas"
+const ASIGNATURAURL="https://wu-backend.onrender.com/v1/api/asignaturas"
 
 const HTTPOPTIONS = {
   headers: new HttpHeaders({
