@@ -1,0 +1,13 @@
+<div class="modal-header">
+  <h4 class="modal-title">Editar {{name}}</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">{{name}}:
+  <input class="form-control" type="text" [(ngModel)]="option.nombre" name="nombre" autofocus>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">
+    Cerrar
+  </button>
+  <button type="button" class="btn btn-primary" (click)="activeModal.close(this.option)">Aceptar</button>
+</div>

@@ -1,0 +1,61 @@
+<header *ngIf="isLoggedIn">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand me-auto" href="#">Logo</a>
+      <div class="btn-group shadow-0">
+        <a type="button" class="btn text-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+          {{usuario.nombre}} {{usuario.apellidos}}
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#cambiarContrasenia" (click)="abrirModal()">Cambiar Contraseña</a></li>
+          <li><a class="dropdown-item text-danger" (click)="logout()">LogOut</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="modal  fade" id="cambiarContrasenia" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Cambiar Contraseña</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form #formulario="ngForm" (ngSubmit)="cambiarcontrasenia()" novalidate>
+          <div>
+            <label for="oldPassword">Contraseña Antigua:</label><br/>
+            <input type="password" id="oldPassword" name="oldPassword" [(ngModel)]="contraseniaAntigua" required minlength="6">
+            <div class="text-danger" *ngIf="formulario.submitted && formulario.controls['oldPassword']?.errors?.['required']">Por favor, ingresa la contraseña antigua.</div>
+            <div class="text-danger" *ngIf="formulario.controls['oldPassword']?.errors?.['minlength']">
+              La contraseña debe tener al menos 6 caracteres.
+            </div>
+          </div>
+          <div>
+            <label for="newPassword">Nueva Contraseña:</label><br/>
+            <input type="password" id="newPassword" name="newPassword" [(ngModel)]="nuevacontrasenia" required minlength="6">
+            <div class="text-danger" *ngIf="formulario.submitted && formulario.controls['newPassword']?.errors?.['required']">Por favor, ingresa la nueva contraseña.</div>
+            <div class="text-danger" *ngIf="formulario.controls['newPassword']?.errors?.['minlength']">
+              La contraseña debe tener al menos 6 caracteres.
+            </div>
+          </div>
+          <div>
+            <label for="confirmPassword">Confirmar Contraseña:</label><br/>
+            <input type="password" id="confirmPassword" name="confirmPassword" [(ngModel)]="confirmarcontrasenia" required minlength="6">
+            <div class="text-danger" *ngIf="formulario.submitted && formulario.controls['confirmPassword']?.errors?.['required']">Por favor, confirma la contraseña.</div>
+            <div class="text-danger" *ngIf="formulario.submitted && confirmarcontrasenia !== nuevacontrasenia">Las contraseñas no coinciden.</div>
+            <div class="text-danger" *ngIf="formulario.controls['confirmPassword']?.errors?.['minlength']">
+              La contraseña debe tener al menos 6 caracteres.
+            </div>
+          </div>
+          <br/>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,18 @@
+<h2 class="accordion-header">
+  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#tema'+tema.id">
+    <h4 class="me-auto">
+      {{tema.nombre}}
+    </h4>
+  </button>
+</h2>
+<div [id]="'tema'+tema.id" class="accordion-collapse collapse">
+  <div class="accordion-body">
+    <table class="table table-striped">
+      <tbody>
+      <tr *ngFor="let tarea of tema.tareas" class="row">
+        <app-tarea [tarea]="tarea"></app-tarea>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

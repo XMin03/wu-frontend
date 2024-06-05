@@ -1,0 +1,10 @@
+<ul class="nav me-auto">
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link" [routerLink]="['../notas']">Notas</a>
+  </li>
+</ul>
+<div class="accordion accordion-flush" id="accordion">
+  <div class="accordion-item" *ngFor="let tema of temas" >
+    <app-tema [tema]="tema"></app-tema>
+  </div>
+</div>

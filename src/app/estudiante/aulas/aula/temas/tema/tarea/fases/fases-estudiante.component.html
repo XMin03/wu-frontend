@@ -1,0 +1,21 @@
+<ul class="nav me-auto">
+  <li class="nav-item">
+    <a class="nav-link text-success" (click)="nivel=1" >Básico</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="nivel=2" [ngClass]="nivelMax<2?'disabled':'text-warning'">Intermedio</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" (click)="nivel=3" [ngClass]="nivelMax<3?'disabled':'text-danger'">Avanzado</a>
+  </li>
+</ul>
+<div>
+  <h4>
+    Nivel {{nivel==1?"Básico":nivel==2?"Intermedio":nivel==3?"Avanzado":"Error"}}
+  </h4>
+</div>
+  <app-fase [nivel]="nivel" [idTarea]="idTarea" (send)="cancelar()" *ngIf="idTarea!=0||nivel==0"></app-fase>
+<div class="justify-content-end d-flex my-5">
+<button class="btn btn-primary mx-2" (click)="cancelar()">Cancelar</button>
+<button class="btn btn-primary" (click)="entregar()">Guardar</button>
+</div>

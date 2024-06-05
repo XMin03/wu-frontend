@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col me-auto">
+    <h1>{{ tarea.get('nombre')?.value }} Nivel: {{ show == 0 ? "Básico" : show == 1 ? "Intermedio" : show == 2 ? "Avanzado" : "Error" }}</h1>
+  </div>
+</div>
+<ul class="nav me-auto">
+  <li class="nav-item">
+    <a class="nav-link text-success" (click)="show=0">Básico</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-warning" (click)="show=1">Intermedio</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link text-danger" (click)="show=2">Avanzado</a>
+  </li>
+</ul>
+<div ngbAccordion>
+  <div ngbAccordionItem [collapsed]="false" *ngFor="let pregunta of tarea.fases.at(show).preguntas.controls; let i=index" [formGroup]="pregunta">
+    <h2 ngbAccordionHeader>
+      <div class="position-relative">
+        <button ngbAccordionButton>
+          <h4 class="me-auto">Pregunta {{ i + 1 }}</h4>
+        </button>
+        <i class="fa-solid fa-x position-absolute translate-middle top-50 end-0 z-3 p-1 fs-4 text-danger" (click)="openEliminarModal(i)"></i>
+      </div>
+    </h2>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          <textarea class="form-control" id="enunciado" name="enunciado" formControlName="enunciado" placeholder="enunciado" aria-label="enunciado" required></textarea>
+          <div *ngIf="pregunta.controls['enunciado'].errors && pregunta.controls['enunciado'].touched" class="text-danger">
+            <div *ngIf="pregunta.controls['enunciado'].errors?.['required']">El enunciado es requerido.</div>
+          </div>
+          <ol>
+            <li *ngFor="let respuesta of pregunta.respuestas.controls; let ir=index" [formGroup]="respuesta">
+              <div class="input-group">
+                <textarea class="form-control me-2" name="respuesta" formControlName="respuesta" placeholder="respuesta" aria-label="respuesta" required></textarea>
+                <div>
+                  <div class="col-12">
+                    <input class="form-check-input" type="checkbox" name="correcta" formControlName="correcta">
+                  </div>
+                  <div class="col-12">
+                    <i class="text-danger fa-solid fa-trash p-1 fs-5" (click)="eliminarRespuesta(i, ir)"></i>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="respuesta.controls['respuesta'].errors && respuesta.controls['respuesta'].touched" class="text-danger">
+                <div *ngIf="respuesta.controls['respuesta'].errors?.['required']">La respuesta es requerida.</div>
+              </div>
+            </li>
+
+            <div *ngIf="pregunta.errors?.['noRespuestaCorrecta'] && pregunta.dirty" class="text-danger">
+              Debe haber al menos una respuesta correcta.
+            </div>
+            <li>
+              <button class="btn btn-primary" (click)="nuevaRespuesta(pregunta)">Nueva respuesta</button>
+            </li>
+          </ol>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="justify-content-between d-flex my-5">
+    <button class="btn btn-primary" (click)="nuevaPregunta()">Nueva Pregunta</button>
+    <div>
+      <button class="btn btn-primary mx-2" (click)="cancelar()">Cancelar</button>
+      <button class="btn btn-primary" [disabled]="tarea.invalid" (click)="guardar()">Guardar</button>
+    </div>
+  </div>
+</div>

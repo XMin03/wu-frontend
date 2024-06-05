@@ -1,0 +1,6 @@
+.btn.dropdown-toggle::after {
+  display: none; /* Oculta el icono del dropdown-toggle */
+}
+.text-hover-danger:hover{
+  color: red;
+}

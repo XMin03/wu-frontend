@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col me-auto">
+    <h4> </h4>
+  </div>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Estudiante</th>
+    <th>Nivel</th>
+    <th>Básico</th>
+    <th>Intermedio</th>
+    <th>Avanzado</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let punto of puntos">
+    <td class="overflow-hidden text-nowrap">{{punto.estudiante.nombre}}</td>
+    <td class="text-nowrap">
+      <button class=" rounded-0 btn bg-success" (click)="onColorClick(punto.estudiante.id,1)">{{punto.fase==1?'v':'x'}}</button>
+      <button class="rounded-0 btn bg-warning" (click)="onColorClick(punto.estudiante.id,2)">{{punto.fase==2?'v':'x'}}</button>
+      <button class="rounded-0 btn bg-danger" (click)="onColorClick(punto.estudiante.id,3)">{{punto.fase==3?'v':'x'}}</button>
+    </td>
+    <td>{{punto.basico}}</td>
+    <td>{{punto.intermedio}}</td>
+    <td>{{punto.avanzado}}</td>
+  </tr>
+  </tbody>
+</table>

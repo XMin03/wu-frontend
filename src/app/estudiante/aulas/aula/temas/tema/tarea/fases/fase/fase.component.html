@@ -1,0 +1,33 @@
+<div ngbAccordion>
+  <div ngbAccordionItem [collapsed]="false" *ngFor="let pregunta of fase.preguntas; let i=index">
+    <h2 ngbAccordionHeader >
+      <button ngbAccordionButton>
+        <h4 class="me-auto">
+          Pregunta {{i+1}}
+        </h4>
+      </button>
+    </h2>
+    <div ngbAccordionCollapse>
+      <div ngbAccordionBody>
+        <ng-template>
+          {{pregunta.enunciado}}
+          <ol>
+            <li *ngFor="let respuesta of pregunta.respuestas;">
+              <div class="input-group">
+                <div class="me-2">
+                  <div class="col-12">
+                    <input type="checkbox" id="{{respuesta.id}}" (change)="toggleSelection($event,respuesta.id)">
+                  </div>
+                </div >
+                <label for="{{respuesta.id}}">
+                  {{respuesta.respuesta}}
+                </label>
+              </div>
+            </li>
+          </ol>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+

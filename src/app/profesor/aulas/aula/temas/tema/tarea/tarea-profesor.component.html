@@ -1,0 +1,12 @@
+<td class="row">
+  <a class="col me-auto" [routerLink]="['../../../tarea',tarea.id]">{{tarea.nombre}}</a>
+  <div class="w-auto ">
+    <a class="p-1" (click)="cambiarEstado()">
+        <i class="fa" [ngClass]="tarea.visible?'fa-eye':'fa-eye-slash'"></i>
+    </a>
+    <a class="p-1" [routerLink]="['../tarea',tarea.id,'config']"> <i class="fa-solid fa-gear"></i></a>
+    <a class="p-1" [routerLink]="['../tarea',tarea.id,'scores']"> <i class="fa-solid fa-ranking-star"></i></a>
+    <a class="p-1" (click)="openEditarModal(tarea)"> <i class="fa-solid fa-pen-to-square"></i></a>
+    <a class="p-1 text-danger" (click)="openEliminarModal(tarea)">  <i class="text-danger fa-solid fa-x" ></i></a>
+  </div>
+</td>

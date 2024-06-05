@@ -1,0 +1,62 @@
+<div class="row row-cols-md-2 row-cols-sm-1">
+  <div>
+    <label>Aulas</label>
+    <select class="form-select" aria-label="Aula" name="aulasSeleccionados" [(ngModel)]="aulaSeleccionado" (ngModelChange)="filter()" (change)="pageChanged()" required>
+      <option value="-1">Selecciona una aula</option>
+      <option *ngFor="let aula of aulas" [value]="aula.id">{{aula.nombre}}</option>
+    </select>
+  </div>
+  <div *ngIf="aulaSeleccionado!=-1">
+    <label>Tema</label>
+    <div class="input-group">
+      <select class="form-select" aria-label="Tema" name="temaSeleccionado" [(ngModel)]="temaSeleccionado" (change)="pageChanged()">
+        <option value="-1">Selecciona un tema</option>
+        <option *ngFor="let tema of temas" [value]="tema.id">{{tema.nombre}}</option>
+      </select>
+      <button *ngIf="temaSeleccionado!=-1" class="btn btn-danger" (click)="openModalTema()">Eliminar</button>
+    </div>
+  </div>
+</div>
+<div class="col-12 col-lg-6">
+  <label>Profesores</label>
+  <select class="form-select" aria-label="Profesor" name="profesoresSeleccionados" [(ngModel)]="profesorSeleccionado" (change)="pageChanged()">
+    <option value="-1">Selecciona un profesor</option>
+    <option *ngFor="let profesor of profesores" [value]="profesor.id">{{profesor.nombre}} {{profesor.apellidos}}</option>
+  </select>
+</div>
+<ng-template #sort>
+  <i class="fas fa-sort"></i>
+</ng-template>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="text-nowrap">
+      Nombre
+    </th>
+    <th class="text-nowrap">
+      Aula
+    </th>
+    <th class="text-nowrap">
+      Tema
+    </th>
+    <th class="text-nowrap">
+      Propietario
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let tarea of tareas">
+    <td class="col overflow-hidden">{{tarea.nombre}}</td>
+    <td class="col overflow-hidden">{{tarea.aulaGrupoAnio}}</td>
+    <td class="col overflow-hidden">{{tarea.temaNombre}}</td>
+    <td class="col overflow-hidden">{{tarea.propietario}}</td>
+    <td class="col">
+        <a class="p-1" (click)="openModalTarea(tarea)">
+          <i class="text-danger fa-solid fa-x" ></i>
+        </a>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<ngb-pagination *ngIf="collectionSize>tareas.length" [collectionSize]="(collectionSize)!" [(page)]="page" [pageSize]="pageSize" (pageChange)="pageChanged()"/>
+

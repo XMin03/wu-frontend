@@ -1,0 +1,64 @@
+<div class="modal-header">
+  <h4 class="modal-title">Add profesor</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+  <ng-template #sort>
+    <i class="fas fa-sort"></i>
+  </ng-template>
+  <div class="col">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" [(ngModel)]="searchTerm" name="searchTerm" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" (click)="pageChanged()" type="submit">Search</button>
+    </form>
+  </div>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th></th>
+      <th class="text-nowrap" (click)="onSort('nombre')">
+        Nombre <i *ngIf="sortColumn === 'nombre';else sort" class="fas" [ngClass]="sortDirection=='asc'?'fa-sort-up':'fa-sort-down'"></i>
+      </th>
+      <th class="text-nowrap" (click)="onSort('apellidos')">
+        Apellidos <i *ngIf="sortColumn === 'apellidos';else sort" class="fas" [ngClass]="sortDirection=='asc'?'fa-sort-up':'fa-sort-down'"></i>
+      </th>
+      <th class="text-nowrap" (click)="onSort('email')">
+        Correo <i *ngIf="sortColumn === 'email';else sort" class="fas" [ngClass]="sortDirection=='asc'?'fa-sort-up':'fa-sort-down'" ></i>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      Selected
+    </tr>
+    <tr *ngFor="let profesor of added">
+      <td><input type="checkbox" disabled></td>
+      <td class="col overflow-hidden">{{profesor.nombre}}</td>
+      <td class="col overflow-hidden">{{profesor.apellidos}}</td>
+      <td class="col overflow-hidden">{{profesor.email}}</td>
+    </tr>
+    <tr *ngFor="let profesor of selected" (click)="toggleSelection(profesor)">
+      <td><input type="checkbox" checked></td>
+      <td class="col overflow-hidden">{{profesor.nombre}}</td>
+      <td class="col overflow-hidden">{{profesor.apellidos}}</td>
+      <td class="col overflow-hidden">{{profesor.email}}</td>
+    </tr>
+    <tr>
+      Profesores.
+    </tr>
+    <tr *ngFor="let profesor of profesores" (click)="toggleSelection(profesor)">
+      <td><input type="checkbox" [checked]="isSelected(profesor.id)" [disabled]="isAdded(profesor.id)"></td>
+      <td class="col overflow-hidden">{{profesor.nombre}}</td>
+      <td class="col overflow-hidden">{{profesor.apellidos}}</td>
+      <td class="col overflow-hidden">{{profesor.email}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <ngb-pagination *ngIf="collectionSize>profesores.length" [collectionSize]="(collectionSize)!" [(page)]="page" [pageSize]="pageSize" (pageChange)="pageChanged()"/>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">
+    Cerrar
+  </button>
+  <button type="button" class="btn btn-danger" (click)="guardar()">Guardar</button>
+</div>

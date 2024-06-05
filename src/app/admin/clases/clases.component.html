@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="col">
+    <h1>Clases</h1>
+  </div>
+</div>
+<div class="row my-1">
+  <div class="col col-md-8">
+    <form action="">
+      <div class="input-group">
+        <select class="form-select" aria-label="Curso" name="cursoSeleccionado" [(ngModel)]="cursoSeleccionado" (ngModelChange)="filtrarClases()">
+          <option value="-1">Selecciona un curso</option>
+          <option *ngFor="let curso of cursos" [value]="curso.id">{{curso.nombre}}</option>
+        </select>
+        <select class="form-select" aria-label="Asignatura" name="asignaturaSeleccionado" [(ngModel)]="asignaturaSeleccionado" (ngModelChange)="filtrarClases()">
+          <option value="-1">Selecciona una asignatura</option>
+          <option *ngFor="let asignatura of asignaturas" [value]="asignatura.id">{{asignatura.nombre}}</option>
+        </select>
+        <button class="btn btn-outline-success" type="submit" (click)="crearClase()" [disabled]="cursoSeleccionado==-1 || asignaturaSeleccionado==-1 || clases.length > 0">Crear</button>
+      </div>
+    </form>
+  </div>
+  <div class="row g-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" >
+    <div class="btn-group" *ngFor="let clase of clases">
+      <button class="w-100 btn btn-primary text-start" [routerLink]="[clase.id]">
+        {{clase.nombre}}
+      </button>
+      <button class="btn btn-primary text-hover-danger" (click)="openModal(clase)">
+        <i class="fa-solid fa-x"></i>
+      </button>
+    </div>
+  </div>
+</div>

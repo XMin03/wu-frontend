@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-sm-10 col-md-8 col-lg-6 col-xl-4 mt-5">
+    <form #formularioProfesor="ngForm" (ngSubmit)="guardar()">
+      <h2>{{ estudiante.id ? 'Editar' : 'Crear' }} Estudiante</h2>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="nombre" [(ngModel)]="estudiante.nombre" required>
+        <label for="nombre">Nombre</label>
+        <!-- Validación para mostrar un mensaje de error si el campo es inválido -->
+        <div *ngIf="formularioProfesor.controls['nombre'].invalid && (formularioProfesor.controls['nombre'].dirty || formularioProfesor.controls['nombre'].touched)">
+          <div *ngIf="formularioProfesor.controls['nombre'].errors?.['required']">El nombre es obligatorio.</div>
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="apellidos" [(ngModel)]="estudiante.apellidos" required>
+        <label for="apellidos" class="form-label">Apellidos</label>
+        <!-- Validación para mostrar un mensaje de error si el campo es inválido -->
+        <div *ngIf="formularioProfesor.controls['apellidos'].invalid && (formularioProfesor.controls['apellidos'].dirty || formularioProfesor.controls['apellidos'].touched)">
+          <div *ngIf="formularioProfesor.controls['apellidos'].errors?.['required']">Los apellidos son obligatorios.</div>
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="email" name="email" placeholder="email@g.educaand.es" [(ngModel)]="estudiante.email" required pattern="^[a-z0-9]+@g.educaand.es$">
+        <label for="email">Email</label>
+        <!-- Validación para mostrar un mensaje de error si el campo es inválido -->
+        <div *ngIf="formularioProfesor.controls['email'].invalid && (formularioProfesor.controls['email'].dirty || formularioProfesor.controls['email'].touched)">
+          <div *ngIf="formularioProfesor.controls['email'].errors?.['required']">El email es obligatorio.</div>
+          <div *ngIf="formularioProfesor.controls['email'].errors?.['pattern']">El email debe ser de la forma ejempl&#64;g.educaand.es</div>
+        </div>
+      </div>
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="aula" name="aula" placeholder="1º Eso" [(ngModel)]="estudiante.aula" required>
+        <label for="aula">Aula</label>
+        <!-- Validación para mostrar un mensaje de error si el campo es inválido -->
+        <div *ngIf="formularioProfesor.controls['aula'].invalid && (formularioProfesor.controls['aula'].dirty || formularioProfesor.controls['aula'].touched)">
+          <div *ngIf="formularioProfesor.controls['aula'].errors?.['required']">El aula es obligatorio.</div>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <button type="button" class="btn btn-secondary me-2" (click)="volver()">Cancelar</button>
+        <button type="submit" class="btn btn-primary" [disabled]="formularioProfesor.invalid">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>

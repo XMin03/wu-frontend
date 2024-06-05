@@ -1,0 +1,10 @@
+.popover-content {
+  width: 100vw; /* Ancho al 100% del viewport */
+  height: 100vh; /* Altura al 100% del viewport */
+  display: flex;
+  justify-content: center; /* Centra el contenido horizontalmente */
+  align-items: center; /* Centra el contenido verticalmente */
+}
+.square-button {
+  height: 100%; /* Esto hará que el botón tenga la misma altura que la fila de la tabla */
+}

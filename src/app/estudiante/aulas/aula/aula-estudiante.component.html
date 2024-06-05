@@ -1,0 +1,14 @@
+<div class="row">
+  <div class="col me-auto">
+    <h1>{{nombreAula}}</h1>
+  </div>
+</div>
+<ul class="nav me-auto">
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link" [routerLink]="['tareas']">Tareas</a>
+  </li>
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link" [routerLink]="['usuarios']">Usuarios</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>

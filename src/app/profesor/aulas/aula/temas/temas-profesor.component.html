@@ -1,0 +1,19 @@
+
+<div class="row">
+  <div class="col me-auto">
+    <h1>{{aula.clase.nombre}} {{aula.grupo}} {{aula.anio}}</h1>
+  </div>
+</div>
+<div class="accordion accordion-flush" id="accordion">
+  <div class="accordion-item" *ngFor="let tema of aula.temas" >
+    <app-tema [tema]="tema" (delete)="deleteTema($event)"></app-tema>
+  </div>
+</div>
+<div class="col">
+  <form action="" (ngSubmit)="crearTema()">
+    <div class="input-group">
+      <input class="form-control" type="text" name="nombre" [(ngModel)]="temaACrear" placeholder="NombreTema" aria-label="nombreTema">
+      <button class="btn btn-outline-success" type="submit">Crear</button>
+    </div>
+  </form>
+</div>

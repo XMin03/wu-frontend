@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+.dropdown-item:hover{
+  background: lightblue;
+}
+a{
+  cursor: pointer;
+  color:var(--bs-primary);
+}
+a i{
+  color:var(--bs-primary);
+}
+.active{
+  border-bottom: 1px solid var(--bs-primary);
+}

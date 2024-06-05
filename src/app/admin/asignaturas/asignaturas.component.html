@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col me-auto">
+    <h1>Asignaturas</h1>
+  </div>
+  <div class="col">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" [(ngModel)]="searchTerm" name="searchTerm" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" (click)="buscar()" type="submit">Search</button>
+    </form>
+  </div>
+</div>
+<div class="row g-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" >
+  <div class="btn-group col" *ngFor="let asignatura of asignaturas">
+    <button class="w-100 btn btn-primary text-start" [routerLink]="['../clases']" [queryParams]="{ asignaturaId: asignatura.id }">
+      {{asignatura.nombre}}
+    </button>
+    <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-solid fa-ellipsis-vertical"></i>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" (click)="openEditarModal(asignatura)">Editar</a></li>
+      <li><a class="dropdown-item text-danger" (click)="openEliminarModal(asignatura)">Eliminar</a></li>
+    </ul>
+  </div>
+  <div class="col">
+    <form action="" (ngSubmit)="crearAsignatura()">
+      <div class="input-group">
+        <input class="form-control" type="text" name="nombreAsignatura" [(ngModel)]="nombreAsignatura" placeholder="NombreAsignatura" aria-label="NombreAsignatura">
+        <button class="btn btn-outline-success" type="submit">Crear</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <h4 class="modal-title">Editar Aula</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss()"></button>
+</div>
+<div class="modal-body">
+  Grupo:
+  <input class="form-control" type="text" [(ngModel)]="aula.grupo" name="grupo" autofocus>
+  Año:
+  <input class="form-control" type="text" [(ngModel)]="aula.anio" name="ano">
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" (click)="activeModal.dismiss()">
+    Cerrar
+  </button>
+  <button type="button" class="btn btn-primary" (click)="close()">Aceptar</button>
+</div>

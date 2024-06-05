@@ -1,0 +1,13 @@
+<h1>{{clase.nombre}}</h1>
+<ul class="nav me-auto">
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link" [routerLink]="['tareas']">Tareas</a>
+  </li>
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link" [routerLink]="['aulas']">Aulas</a>
+  </li>
+  <li class="nav-item" routerLinkActive="active">
+    <a class="nav-link" [routerLink]="['profesores']">Profesores</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>

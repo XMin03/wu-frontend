@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col me-auto">
+    <h1>Aulas</h1>
+  </div>
+  <div class="col">
+    <form class="d-flex" role="search">
+      <input class="form-control me-2" [(ngModel)]="searchTerm" name="searchTerm" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" (click)="buscar()" type="submit">Search</button>
+    </form>
+  </div>
+</div>
+<div class="row g-2 row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4" >
+  <div class="btn-group col" *ngFor="let aula of aulas">
+    <button class="w-100 btn btn-primary text-start" [routerLink]="['../']" [queryParams]="{ aulaId: aula.id }">
+      {{aula.nombre}}
+    </button>
+    <button class="btn btn-primary text-hover-danger" (click)="openEliminarModal(aula)">
+      <i class="fa-solid fa-x"></i>
+    </button>
+  </div>
+</div>

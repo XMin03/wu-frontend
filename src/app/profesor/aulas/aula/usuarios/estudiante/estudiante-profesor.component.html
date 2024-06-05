@@ -1,0 +1,44 @@
+<div class="col">
+  <form class="d-flex" role="search">
+    <input class="form-control me-2" [(ngModel)]="searchTerm" name="searchTerm" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success" (click)="getEstudiantes()" type="submit">Search</button>
+  </form>
+</div>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th class="text-nowrap" (click)="onSort('nombre')">
+      Nombre <i *ngIf="sortColumn === 'nombre';else sort" class="fas" [ngClass]="sortDirection=='asc'?'fa-sort-up':'fa-sort-down'"></i>
+    </th>
+
+    <th class="text-nowrap" (click)="onSort('apellidos')">
+      Apellidos <i *ngIf="sortColumn === 'apellidos';else sort" class="fas" [ngClass]="sortDirection=='asc'?'fa-sort-up':'fa-sort-down'"></i>
+    </th>
+    <th class="text-nowrap" (click)="onSort('email')">
+      Correo <i *ngIf="sortColumn === 'email';else sort" class="fas" [ngClass]="sortDirection=='asc'?'fa-sort-up':'fa-sort-down'" ></i>
+    </th>
+    <th class="text-nowrap" (click)="onSort('aula')">
+      Aula <i *ngIf="sortColumn === 'aula';else sort" class="fas" [ngClass]="sortDirection=='asc'?'fa-sort-up':'fa-sort-down'" ></i>
+    </th>
+    <th class="text-end"><a (click)="abrirModalAnadir()"><i class="fa-solid fa-plus"></i></a></th>
+    <ng-template #sort>
+      <i class="fas fa-sort"></i>
+    </ng-template>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let estudiante of estudiantes">
+    <td class="overflow-hidden">{{estudiante.nombre}}</td>
+    <td class="overflow-hidden">{{estudiante.apellidos}}</td>
+    <td class="overflow-hidden">{{estudiante.email}}</td>
+    <td class="overflow-hidden">{{estudiante.aula}}</td>
+    <td class="text-nowrap">
+      <div class="text-end">
+        <a class="p-1" (click)="openModal(estudiante)">
+          <i class="text-danger fa-solid fa-minus"></i>
+        </a>
+      </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
