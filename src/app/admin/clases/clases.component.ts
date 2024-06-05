@@ -38,7 +38,6 @@ export class ClasesComponent {
     });
     this.claseService.filterClase(this.cursoSeleccionado,this.asignaturaSeleccionado).subscribe({
       next: (data) => {
-        console.log(data)
         this.clases = (data)
         this.cursoService.getCursos().subscribe(cursos=>this.cursos = cursos);
         this.asignaturaService.getAsignaturas().subscribe(asignaturas=>this.asignaturas = asignaturas);
